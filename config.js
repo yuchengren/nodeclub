@@ -18,8 +18,8 @@ var config = {
   site_headers: [
     '<meta name="author" content="EDP@TAOBAO" />'
   ],
-  site_logo: '/public/images/site_logo.jpeg', // default is `name`
-  site_icon: '/public/images/site_logo.jpeg', // 默认没有 favicon, 这里填写网址
+  site_logo: '/public/images/site_logo.png', // default is `name`
+  site_icon: '/public/images/site_logo.png', // 默认没有 favicon, 这里填写网址
   // 右上角的导航区
   site_navs: [
     // 格式 [ path, title, [target=''] ]
