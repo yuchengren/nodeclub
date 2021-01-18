@@ -119,8 +119,10 @@ var config = {
   // 版块
   tabs: [
     ['share', '分享'],
+    ['ask', '问答'],
     ['trade', '交易'],
     ['job', '招聘'],
+    ['advertising', '广告'],
     ['public', '公示'],
   ],
 
