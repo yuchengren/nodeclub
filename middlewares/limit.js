@@ -19,7 +19,8 @@ var makePerDayLimiter = function (identityName, identityFn) {
           return next(err);
         }
         count = count || 0;
-        if (count < limitCount) {
+        // 管理员不限制
+        if (count < limitCount || config.admins.hasOwnProperty(identity)) {
           count += 1;
           cache.set(key, count, 60 * 60 * 24);
           res.set('X-RateLimit-Limit', limitCount);
@@ -45,7 +46,7 @@ exports.peruserperday = makePerDayLimiter('peruserperday', function (req) {
 exports.peripperday = makePerDayLimiter('peripperday', function (req) {
   var realIP = req.get('x-real-ip');
   if (!realIP && !config.debug) {
-    throw new Error('should provide `x-real-ip` header')
+    throw new Error('should provide `x-real-ip` header');
   }
   return realIP;
 });
