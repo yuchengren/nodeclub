@@ -121,6 +121,8 @@ var config = {
     ['share', '分享'],
     ['ask', '问答'],
     ['trade', '交易'],
+    ['fun', '娱乐'],
+    ['complex', '杂谈'],
     ['job', '招聘'],
     ['advertising', '广告'],
     ['public', '公示'],
