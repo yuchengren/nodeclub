@@ -9,9 +9,9 @@
     </div>
     <div class='inner userinfo'>
       <div class='user_big_avatar'>
-        <img src="<%= proxy(user.avatar_url) %>" class="user_avatar" title="<%= user.loginname %>"/>
+        <img src="<%= proxy(user.avatar_url) %>" class="user_avatar" title="<%= user.name %>"/>
       </div>
-      <a class='dark'><%= user.loginname %></a>
+      <a class='dark'><%= user.name %></a>
 
       <div class='user_profile'>
         <ul class='unstyled'>
@@ -69,6 +69,7 @@
 
       <br/><br/>
       Email (Seen by Administrator): <a href="mailto:<%= user.email %>"><%= user.email %></a>
+      <br/>loginname (Seen by Administrator): <a><%= user.loginname %></a>
       <% if (!user.active) { %>
       <a href="/active_account?key=<%- typeof(token) !== 'undefined' && token %>&name=<%= user.loginname %>"
          target="_blank">

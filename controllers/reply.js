@@ -46,7 +46,7 @@ exports.add = function (req, res, next) {
       Topic.updateLastReply(topic_id, reply._id, ep.done(function () {
         ep.emit('reply_saved', reply);
         //发送at消息，并防止重复 at 作者
-        var newContent = content.replace('@' + topicAuthor.loginname + ' ', '');
+        var newContent = content.replace('@' + topicAuthor.name + ' ', '');
         at.sendMessageToMentionUsers(newContent, topic_id, req.session.user._id, reply._id);
       }));
     }));

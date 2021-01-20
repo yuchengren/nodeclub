@@ -41,7 +41,7 @@ exports.index = function (req, res, next) {
         recent_topics: recent_topics,
         recent_replies: recent_replies,
         token: token,
-        pageTitle: util.format('@%s 的个人主页', user.loginname),
+        pageTitle: util.format('@%s 的个人主页', user.name),
       });
     };
 
@@ -105,6 +105,7 @@ exports.setting = function (req, res, next) {
     var data2 = {
       loginname: data.loginname,
       email: data.email,
+      name: data.name,
       url: data.url,
       location: data.location,
       signature: data.signature,
@@ -122,16 +123,21 @@ exports.setting = function (req, res, next) {
   // post
   var action = req.body.action;
   if (action === 'change_setting') {
+    var name = validator.trim(req.body.name);
     var url = validator.trim(req.body.url);
     var location = validator.trim(req.body.location);
     var weibo = validator.trim(req.body.weibo);
     var signature = validator.trim(req.body.signature);
 
     User.getUserById(req.session.user._id, ep.done(function (user) {
+      user.name = name;
       user.url = url;
       user.location = location;
       user.signature = signature;
       user.weibo = weibo;
+      if(name === ''){
+        return showMessage('昵称不能为空！', user);
+      }
       user.save(function (err) {
         if (err) {
           return next(err);

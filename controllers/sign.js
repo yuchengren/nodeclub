@@ -18,6 +18,7 @@ exports.signup = function (req, res, next) {
   var email     = validator.trim(req.body.email).toLowerCase();
   var pass      = validator.trim(req.body.pass);
   var rePass    = validator.trim(req.body.re_pass);
+  var name    = validator.trim(req.body.name);
 
   var ep = new eventproxy();
   ep.fail(next);
@@ -27,7 +28,7 @@ exports.signup = function (req, res, next) {
   });
 
   // 验证信息的正确性
-  if ([loginname, pass, rePass, email].some(function (item) { return item === ''; })) {
+  if ([loginname, pass, rePass, email, name].some(function (item) { return item === ''; })) {
     ep.emit('prop_err', '信息不完整。');
     return;
   }
@@ -62,7 +63,7 @@ exports.signup = function (req, res, next) {
     tools.bhash(pass, ep.done(function (passhash) {
       // create gravatar
       var avatarUrl = User.makeGravatar(email);
-      User.newAndSave(loginname, loginname, passhash, email, avatarUrl, false, function (err) {
+      User.newAndSave(name, loginname, passhash, email, avatarUrl, false, function (err) {
         if (err) {
           return next(err);
         }
