@@ -26,9 +26,9 @@ var config = {
     [ '/about', '关于' ]
   ],
   // cdn host，如 http://cnodejs.qiniudn.com
-  site_static_host: 'http://bbs.ycrsky.com', // 静态文件存储域名
+  site_static_host: '', // 静态文件存储域名
   // 社区的域名
-  host: 'bbs.ycrsky.com',
+  host: 'jnf.ycrsky.com',
   // 默认的Google tracker ID，自有站点请修改，申请地址：http://www.google.com/analytics/
   google_tracker_id: '',
   // 默认的cnzz tracker ID，自有站点请修改
@@ -55,7 +55,7 @@ var config = {
   // RSS配置
   rss: {
     title: '江南府社区论坛',
-    link: 'http://bbs.ycrsky.com',
+    link: 'http://jnf.ycrsky.com',
     language: 'zh-cn',
     description: '江南府社区论坛',
     //最多获取的RSS Item数量
