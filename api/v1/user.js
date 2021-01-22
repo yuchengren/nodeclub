@@ -40,16 +40,16 @@ var show = function (req, res, next) {
     ep.all('recent_topics', 'recent_replies',
       function (recent_topics, recent_replies) {
 
-        user = _.pick(user, ['loginname', 'avatar_url', 'githubUsername',
+        user = _.pick(user, ['loginname', 'name', 'avatar_url', 'githubUsername',
           'create_at', 'score']);
 
         user.recent_topics = recent_topics.map(function (topic) {
-          topic.author = _.pick(topic.author, ['loginname', 'avatar_url']);
+          topic.author = _.pick(topic.author, ['loginname', 'name', 'avatar_url']);
           topic        = _.pick(topic, ['id', 'author', 'title', 'last_reply_at']);
           return topic;
         });
         user.recent_replies = recent_replies.map(function (topic) {
-          topic.author = _.pick(topic.author, ['loginname', 'avatar_url']);
+          topic.author = _.pick(topic.author, ['loginname', 'name', 'avatar_url']);
           topic        = _.pick(topic, ['id', 'author', 'title', 'last_reply_at']);
           return topic;
         });
