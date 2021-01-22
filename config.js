@@ -118,9 +118,8 @@ var config = {
 
   // 版块
   tabs: [
-    ['complex', '聊天'],
+    ['common', '交流'],
     ['share', '分享'],
-    ['ask', '问答'],
     ['trade', '交易'],
     ['fun', '娱乐'],
     ['job', '招聘'],
