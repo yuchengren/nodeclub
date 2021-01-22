@@ -125,7 +125,7 @@ var config = {
     ['fun', '娱乐'],
     ['job', '招聘'],
     ['advertising', '广告'],
-    ['public', '公示'],
+    ['notice', '公示'],
   ],
 
   // 极光推送
