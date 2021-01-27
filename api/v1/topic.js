@@ -20,7 +20,7 @@ var index = function (req, res, next) {
 
   var query = {};
   if (!tab || tab === 'all') {
-    query.tab = {$nin: ['job', 'dev']}
+    query.tab = {$nin: ['dev']}
   } else {
     if (tab === 'good') {
       query.good = true;

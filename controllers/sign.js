@@ -37,7 +37,7 @@ exports.signup = function (req, res, next) {
     return;
   }
   if (!tools.validateId(loginname)) {
-    return ep.emit('prop_err', '用户名格式如【1-1-1-101】即x期x幢x单元xxxx号（岚境居为1期，雅静居为2期）');
+    return ep.emit('prop_err', '用户名格式如:1-1-1-101,即x期x幢x单元xxxx号（岚境居为1期，雅静居为2期）');
   }
   if (!validator.isEmail(email)) {
     return ep.emit('prop_err', '邮箱不合法。');
