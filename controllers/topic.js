@@ -20,6 +20,10 @@ var _            = require('lodash');
 var cache        = require('../common/cache');
 var logger = require('../common/logger')
 
+var qn    = require('../common/store_qn');
+var utility = require('utility');
+var path    = require('path');
+
 /**
  * Topic page
  *
@@ -454,8 +458,12 @@ exports.upload = function (req, res, next) {
           msg: 'File size too large. Max is ' + config.file_limit
         })
       });
-
-      store.upload(file, {filename: filename}, function (err, result) {
+      var newFilename = utility.md5(filename + String((new Date()).getTime())) + path.extname(filename);
+      var key = newFilename;
+      if(qn !== null) {
+        key = config.qn_access.filePathSuffix + newFilename;
+      }
+      store.upload(file, {filename: newFilename, key: key}, function (err, result) {
         if (err) {
           return next(err);
         }
