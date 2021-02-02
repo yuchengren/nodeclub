@@ -10,9 +10,9 @@ var config = {
 
   get mini_assets() { return !this.debug; }, // 是否启用静态文件的合并压缩，详见视图中的Loader
 
-  name: '江南府社区论坛', // 社区名字
-  description: '江南府社区论坛', // 社区的描述
-  keywords: '江南府, 论坛',
+  name: '江南府社区', // 社区名字
+  description: '江南府社区', // 社区的描述
+  keywords: '江南府,社区,论坛',
 
   // 添加到 html head 中的信息
   site_headers: [
@@ -54,10 +54,10 @@ var config = {
 
   // RSS配置
   rss: {
-    title: '江南府社区论坛',
+    title: '江南府社区',
     link: 'http://jnf.ycrsky.com',
     language: 'zh-cn',
-    description: '江南府社区论坛',
+    description: '江南府社区',
     //最多获取的RSS Item数量
     max_rss_items: 50
   },
