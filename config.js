@@ -39,14 +39,14 @@ var config = {
   // cdn host，如 http://cnodejs.qiniudn.com
   site_static_host: '', // 静态文件存储域名
   // 社区的域名
-  host: 'jnf.ycrsky.com',
+  host: SUBDOMAIN,
   // 默认的Google tracker ID，自有站点请修改，申请地址：http://www.google.com/analytics/
   google_tracker_id: '',
   // 默认的cnzz tracker ID，自有站点请修改
   cnzz_tracker_id: '',
 
   // mongodb 配置
-  db: 'mongodb://127.0.0.1/jnf_bbs',
+  db: 'mongodb://127.0.0.1/' + COMMUNITY + '_bbs',
 
   // redis 配置，默认是本地
   redis_host: '127.0.0.1',
@@ -55,7 +55,7 @@ var config = {
   redis_password: '',
 
   session_secret: 'node_club_secret', // 务必修改
-  auth_cookie_name: 'node_club',
+  auth_cookie_name: COMMUNITY + '_bbs',
 
   // 程序运行的端口
   port: 3000,
@@ -66,7 +66,7 @@ var config = {
   // RSS配置
   rss: {
     title: '江南府社区',
-    link: 'http://jnf.ycrsky.com',
+    link: HTTP_DOMAIN,
     language: 'zh-cn',
     description: '江南府社区',
     //最多获取的RSS Item数量
@@ -91,7 +91,9 @@ var config = {
   weibo_id: 'your_weibo_id',
 
   // admin 可删除话题，编辑标签。把 user_login_name 换成你的登录名
-  admins: { user_login_name: true },
+  admins: {
+    'yuchengren': true,
+  },
 
   // github 登陆的配置
   GITHUB_OAUTH: {
@@ -111,12 +113,13 @@ var config = {
   qn_access: {
     accessKey: '',
     secretKey: '',
-    bucket: '', //空间名称
-    origin: '', //源站域名
+    bucket: 'ycrsky', //空间名称
+    origin: FILE_DOMAIN_ORIGIN + '/', //源站域名
     // 如果vps在国外，请使用 http://up.qiniug.com/ ，这是七牛的国际节点
     // 如果在国内，此项请留空
     uploadURL: '',
-    filePathSuffix: "", //文件的路径前缀,如path/
+    filePathSuffix: COMMUNITY + "/", //文件的路径前缀,如path/
+    fileDomain: FILE_DOMAIN, //文件存储域名
   },
 
   // 文件上传配置
@@ -146,8 +149,8 @@ var config = {
     isDebug: false,
   },
 
-  create_post_per_day: 1, // 每个用户一天可以发的主题数
-  create_reply_per_day: 10, // 每个用户一天可以发的评论数
+  create_post_per_day: 2, // 每个用户一天可以发的主题数
+  create_reply_per_day: 50, // 每个用户一天可以发的评论数
   create_user_per_ip: 1, // 每个 ip 每天可以注册账号的次数
   visit_per_day: 1000, // 每个 ip 每天能访问的次数
 };
