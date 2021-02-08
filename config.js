@@ -17,7 +17,7 @@ const FILE_DOMAIN = FILE_DOMAIN_ORIGIN + "/" + COMMUNITY;
 
 var config = {
   // debug 为 true 时，用于本地调试
-  debug: true,
+  debug: false,
 
   get mini_assets() { return !this.debug; }, // 是否启用静态文件的合并压缩，详见视图中的Loader
 

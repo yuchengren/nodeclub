@@ -138,6 +138,9 @@ exports.setting = function (req, res, next) {
       if(name === ''){
         return showMessage('昵称不能为空！', user);
       }
+      if(req.body.loginname.startsWith("wsy") && !req.body.name.startsWith("网诗园")){
+        return showMessage('网诗园业主,昵称前缀请携带网诗园哟', user);
+      }
       user.save(function (err) {
         if (err) {
           return next(err);

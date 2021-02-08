@@ -30,7 +30,7 @@
             <% } else { %>
             <input class='input-xlarge' id='loginname' name='loginname' size='30' type='text' value=''/>
             <% } %>
-            <span>用户名格式如:1-1-1-101,即x期x幢x单元xxxx号（岚境居为1期，雅静居为2期）</span>
+            <span>格式如:1-1-1-101,即x期x幢x单元xxxx号(岚境居为1期，雅静居为2期)(网诗园格式如:wsy1-101,即1幢101)</span>
           </div>
         </div>
         <div class='control-group'>
@@ -61,7 +61,12 @@
         <div class='control-group'>
           <label class='control-label' for='name'>昵称</label>
           <div class='controls'>
+            <% if (typeof(name) !== 'undefined') { %>
+            <input class='input-xlarge' id='name' name='name' size='30' type='text' value='<%= name %>'/>
+            <% } else { %>
             <input class='input-xlarge' id='name' name='name' size='30' type='text'/>
+            <% } %>
+            <span>网诗园业主注册，昵称会自动拼接'网诗园'前缀</span>
           </div>
         </div>
 

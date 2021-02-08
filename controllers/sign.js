@@ -24,7 +24,7 @@ exports.signup = function (req, res, next) {
   ep.fail(next);
   ep.on('prop_err', function (msg) {
     res.status(422);
-    res.render('sign/signup', {error: msg, loginname: loginname, email: email});
+    res.render('sign/signup', {error: msg, loginname: loginname, email: email, name: name});
   });
 
   // 验证信息的正确性
@@ -32,12 +32,13 @@ exports.signup = function (req, res, next) {
     ep.emit('prop_err', '信息不完整。');
     return;
   }
-  if (loginname.length < 5) {
-    ep.emit('prop_err', '用户名至少需要5个字符。');
-    return;
+  var finalName = name
+  if(loginname.startsWith("wsy")){
+    finalName = '网诗园' + name;
   }
+
   if (!tools.validateId(loginname)) {
-    return ep.emit('prop_err', '用户名格式如:1-1-1-101,即x期x幢x单元xxxx号（岚境居为1期，雅静居为2期）');
+    return ep.emit('prop_err', '用户名格式如:1-1-1-101,即x期x幢x单元xxxx号(岚境居为1期，雅静居为2期)(网诗园格式如:wsy1-101,即1幢101)');
   }
   if (!validator.isEmail(email)) {
     return ep.emit('prop_err', '邮箱不合法。');
@@ -63,7 +64,7 @@ exports.signup = function (req, res, next) {
     tools.bhash(pass, ep.done(function (passhash) {
       // create gravatar
       var avatarUrl = User.makeGravatar(email);
-      User.newAndSave(name, loginname, passhash, email, avatarUrl, false, function (err) {
+      User.newAndSave(finalName, loginname, passhash, email, avatarUrl, false, function (err) {
         if (err) {
           return next(err);
         }
