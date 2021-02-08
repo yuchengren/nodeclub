@@ -30,7 +30,7 @@ var config = {
     '<meta name="author" content="EDP@TAOBAO" />'
   ],
   site_logo: FILE_DOMAIN + '/site_logo.png', // default is `name`
-  site_icon: '/public/images/site_icon.png', // 默认没有 favicon, 这里填写网址
+  site_icon: FILE_DOMAIN + '/site_icon.png', // 默认没有 favicon, 这里填写网址
   // 右上角的导航区
   site_navs: [
     // 格式 [ path, title, [target=''] ]
