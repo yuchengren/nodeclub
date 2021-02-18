@@ -32,7 +32,7 @@ exports.signup = function (req, res, next) {
     ep.emit('prop_err', '信息不完整。');
     return;
   }
-  var finalName = name
+  var finalName = name;
   if(loginname.startsWith("wsy")){
     finalName = '网诗园' + name;
   }

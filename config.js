@@ -27,7 +27,7 @@ var config = {
 
   // 添加到 html head 中的信息
   site_headers: [
-    '<meta name="author" content="EDP@TAOBAO" />'
+    '<meta name="baidu-site-verification" content="" />'
   ],
   site_logo: FILE_DOMAIN + '/site_logo.png', // default is `name`
   site_icon: FILE_DOMAIN + '/site_icon.png', // 默认没有 favicon, 这里填写网址
