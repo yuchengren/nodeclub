@@ -43,7 +43,8 @@ var config = {
   // 默认的Google tracker ID，自有站点请修改，申请地址：http://www.google.com/analytics/
   google_tracker_id: '',
   // 默认的cnzz tracker ID，自有站点请修改
-  cnzz_tracker_id: '',
+  baidu_tracker_id: '',
+  // 默认的百度分析ID，自由站点请修改，申请地址：https://tongji.baidu.com/sc-web/
 
   // mongodb 配置
   db: 'mongodb://127.0.0.1/' + COMMUNITY + '_bbs',
