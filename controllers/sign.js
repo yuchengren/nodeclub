@@ -63,7 +63,8 @@ exports.signup = function (req, res, next) {
 
     tools.bhash(pass, ep.done(function (passhash) {
       // create gravatar
-      var avatarUrl = User.makeGravatar(email);
+      // var avatarUrl = User.makeGravatar(email);
+      var avatarUrl = config.qn_access.fileDomain + "/avatar_default.jpeg";
       User.newAndSave(finalName, loginname, passhash, email, avatarUrl, false, function (err) {
         if (err) {
           return next(err);

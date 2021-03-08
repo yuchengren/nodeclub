@@ -106,6 +106,7 @@ exports.setting = function (req, res, next) {
       loginname: data.loginname,
       email: data.email,
       name: data.name,
+      avatar: data.avatar,
       url: data.url,
       location: data.location,
       signature: data.signature,
@@ -124,6 +125,7 @@ exports.setting = function (req, res, next) {
   var action = req.body.action;
   if (action === 'change_setting') {
     var name = validator.trim(req.body.name);
+    var avatar = validator.trim(req.body.avatar);
     var url = validator.trim(req.body.url);
     var location = validator.trim(req.body.location);
     var weibo = validator.trim(req.body.weibo);
@@ -131,6 +133,7 @@ exports.setting = function (req, res, next) {
 
     User.getUserById(req.session.user._id, ep.done(function (user) {
       user.name = name;
+      user.avatar = avatar;
       user.url = url;
       user.location = location;
       user.signature = signature;
@@ -140,6 +143,9 @@ exports.setting = function (req, res, next) {
       }
       if(req.body.loginname.startsWith("wsy") && !req.body.name.startsWith("网诗园")){
         return showMessage('网诗园业主,昵称前缀请携带网诗园哟', user);
+      }
+      if(avatar === ''){
+        return showMessage('头像链接不能为空！', user);
       }
       user.save(function (err) {
         if (err) {
